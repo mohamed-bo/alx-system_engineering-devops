@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# script to install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+if [[ ! $(pgrep nginx) ]]; then
+    sudo service nginx start
+fi
+sudo ufw allow 'Nginx HTTP'
+chown -R "$USER":"$USER" /var/www/html
+chmod -R 755 /var/www
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo sed -i '\n\t github ^/redirect_me https://github.com/mohamed-bo' /etc/nginx/sites-available/default
+sudo service nginx restart
+echo -e "\nfinish runging\n"
