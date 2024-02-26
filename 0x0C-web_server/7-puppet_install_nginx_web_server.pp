@@ -1,18 +1,21 @@
 #install nginx
+exec { 'getupdate':
+        command => '/usr/bin/apt-get update',
+}
 
 package {
     'nginx':
     ensure => installed,
+    require => Exec['getupdate']
 }
 
 file {'/var/www/html/index.nginx-debian.html':
     content => 'Hello World!',
 }
 
-file_line {'configure redirection':
-    path  =>  '/etc/nginx/sites-available/default',
-    after =>  'server_name _;',
-    line  =>  "\n\t github ^/redirect_me https://github.com/mohamed-bo",
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
 
 service {'nginx':
