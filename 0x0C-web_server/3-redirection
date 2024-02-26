@@ -2,9 +2,7 @@
 # script to install nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
-if [[ ! $(pgrep nginx) ]]; then
-    sudo service nginx start
-fi
+sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
 chown -R "$USER":"$USER" /var/www/html
 chmod -R 755 /var/www
