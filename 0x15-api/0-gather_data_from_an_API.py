@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """return to-do list"""
-from sys import argv
 from requests import get
+from sys import argv
 if __name__ == '__main__':
     linkAPI = "https://jsonplaceholder.typicode.com"
     toDoApi = linkAPI + "/user/{}/todos".format(argv[1])

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """export to do liost"""
-from sys import argv
-from requests import get
 from csv import DictWriter, QUOTE_ALL
+from requests import get
+from sys import argv
 if __name__ == "__main__":
     linkAPI = "https://jsonplaceholder.typicode.com"
     toDoApi = linkAPI + "/user/{}/todos".format(argv[1])
