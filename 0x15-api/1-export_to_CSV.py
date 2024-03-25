@@ -10,12 +10,11 @@ if __name__ == "__main__":
     user = get(userName).json()
     response = get(toDoApi).json()
     toDoArray = []
-
     for todo in response:
         result = {}
         result.update({"user_ID": argv[1], "username": user.get(
-            "username"), "completed": todo.get("completed"),
-                          "task": todo.get("title")})
+                       "username"), "completed": todo.get("completed"),
+                       "task": todo.get("title")})
         toDoArray.append(result)
     with open("{}.csv".format(argv[1]), 'w', newline='') as f:
         header = ["user_ID", "username", "completed", "task"]
