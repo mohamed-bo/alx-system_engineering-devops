@@ -10,7 +10,7 @@ if __name__ == '__main__':
     name = get(userApi).json()
     length = len(toDorespone)
     result = len([todo for todo in toDorespone
-                         if todo.get("completed")])
+                  if todo.get("completed")])
     name = name.get("name")
     print("Employee {} is done with tasks({}/{}):"
           .format(name, result, length))
